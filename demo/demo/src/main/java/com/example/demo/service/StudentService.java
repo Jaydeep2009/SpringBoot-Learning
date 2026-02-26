@@ -19,4 +19,6 @@ public interface StudentService {
     StudentDta updateStudent(Long id, CreateStudentDta createStudentDta);
 
     StudentDta updateStudentPartially(Long id, Map<String, Object> updates);
+
+    void deleteAll();
 }

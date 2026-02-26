@@ -53,4 +53,10 @@ public class StudentController {
     {
         return ResponseEntity.status(HttpStatus.CREATED).body(studentService.updateStudentPartially(id,updates));
     }
+
+    @DeleteMapping("/deleteAll")
+    public ResponseEntity<Void> deleteAll(){
+        studentService.deleteAll();
+        return ResponseEntity.noContent().build();
+    }
 }

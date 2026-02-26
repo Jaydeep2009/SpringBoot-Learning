@@ -85,8 +85,14 @@ public class StudentImpl implements StudentService {
                     throw new IllegalArgumentException("Field invalid");
             }
         });
+        Student saveStudent = studentRepository.save(student);
 
-        return modelMapper.map(student,StudentDta.class);
+        return modelMapper.map(saveStudent,StudentDta.class);
+    }
+
+    @Override
+    public void deleteAll() {
+        studentRepository.deleteAll();
     }
 
 
