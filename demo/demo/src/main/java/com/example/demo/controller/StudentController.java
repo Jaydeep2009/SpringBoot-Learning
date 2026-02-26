@@ -4,6 +4,7 @@ import com.example.demo.dta.CreateStudentDta;
 import com.example.demo.dta.StudentDta;
 import com.example.demo.repository.StudentRepository;
 import com.example.demo.service.StudentService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,7 +31,7 @@ public class StudentController {
     }
 
     @PostMapping()
-    public ResponseEntity<StudentDta> createStudent(@RequestBody CreateStudentDta createStudentDta){
+    public ResponseEntity<StudentDta> createStudent(@RequestBody @Valid CreateStudentDta createStudentDta){
         return ResponseEntity.status(HttpStatus.CREATED).body(studentService.createNewStudent(createStudentDta));
     }
 
@@ -42,7 +43,7 @@ public class StudentController {
 
     @PutMapping("/{id}")
     public ResponseEntity<StudentDta> updateStudent
-            (@PathVariable Long id, @RequestBody CreateStudentDta createStudentDta)
+            (@PathVariable Long id, @RequestBody @Valid CreateStudentDta createStudentDta)
     {
         return ResponseEntity.status(HttpStatus.CREATED).body(studentService.updateStudent(id,createStudentDta));
     }
